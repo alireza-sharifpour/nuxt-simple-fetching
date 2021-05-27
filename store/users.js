@@ -24,9 +24,9 @@ export const actions = {
         "https://jsonplaceholder.typicode.com/users"
       );
       commit("SET_USERS", users.data);
-      commit("SET_LOADING", false);
     } catch (error) {
       commit("SET_ERROR", error.response);
+    } finally {
       commit("SET_LOADING", false);
     }
   }
