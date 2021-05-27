@@ -19,6 +19,9 @@ export default {
     },
     isLoading() {
       return this.$store.state.users.isLoading;
+    },
+    error() {
+      return this.$store.state.users.error;
     }
   },
   async mounted() {
