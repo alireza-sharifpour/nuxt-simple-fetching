@@ -13,26 +13,17 @@
 
 <script>
 export default {
-  data() {
-    return {
-      users: [],
-      isLoading: false,
-      error: undefined
-    };
+  computed: {
+    users() {
+      return this.$store.state.users.users;
+    },
+    isLoading() {
+      return this.$store.state.users.isLoading;
+    }
   },
-  mounted() {
-    this.isLoading = true;
-    this.$store
-      .dispatch("users/getUsers")
-      .then(res => {
-        this.users = res.data;
-        console.log("Users", res);
-        this.isLoading = false;
-      })
-      .catch(err => {
-        this.error = err.response;
-        this.isLoading = false;
-      });
+  async mounted() {
+    await this.$store.dispatch("users/getUsers");
+    console.log("users", this.$store.state.users);
   }
 };
 </script>
